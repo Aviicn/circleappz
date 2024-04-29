@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id          Int      @id @default(autoincrement())
+  username  String   @unique
+  fullname    String
+  email       String @unique
+  password    String
+  image       String?  
+  cover       String?  
+  description String?
+  threads     Thread[]
+  likes       Like[]
+  follower  Follow[] @relation("follower")
+  following Follow[] @relation("following")
+  replies     Reply[]
+}
+
+model Follow {
+  followerId  Int
+  followingId Int
+  follower    User @relation("follower", fields: [followerId], references: [id])
+  following   User @relation("following", fields: [followingId], references: [id])
+
+  @@id([followerId, followingId])
+}
+model Thread {
+  id        Int      @id @default(autoincrement())
+  content   String?
+  image     String?
+  posted_at DateTime @default(now())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  likes     Like[]
+  replies   Reply[]
+}
+
+model Like {
+  threadId  Int
+  userId    Int
+  user      User   @relation(fields: [userId], references: [id])
+
+  @@id([threadId, userId])
+}
+
+
+model Reply {
+  id        Int    @id @default(autoincrement())
+  content   String
+  userId    Int
+  threadId  Int
+  user      User   @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  thread    Thread @relation(fields: [threadId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+}

@@ -1,0 +1,12 @@
+#root {
+  font-family: inter, system-ui, Arial, Helvetica, sans-serif;
+  background-color: black;
+  color: white;
+  margin: 0; /* This will remove the default margin added by browsers */
+  overflow: hidden; /* This will hide the scrollbar (optional) */
+}
+
+.beranda::-webkit-scrollbar {
+  display: none;
+  overflow: hidden;
+}
