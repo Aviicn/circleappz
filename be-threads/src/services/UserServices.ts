@@ -31,6 +31,7 @@ class UserService {
           fullname: true,
           username: true,
           image: true,
+          cover: true,
         },
       });
 

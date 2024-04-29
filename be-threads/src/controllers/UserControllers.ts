@@ -47,11 +47,14 @@ export default new (class UserControllers {
     try {
       const id = parseInt(req.params.id);
       const image = res.locals.filename || null;
+      const cover = res.locals.filename || null;
+
       const data = {
         ...req.body,
         image,
+        cover,
       };
-      console.log("COVER ", data);
+
       if (isNaN(id) || id < 0)
         return res.status(400).json({ message: "Invalid ID provided!" });
 
@@ -62,19 +65,35 @@ export default new (class UserControllers {
       const { error, value } = updateUserSchema.validate(data);
       if (error) return res.status(400).json({ message: error });
 
+      // let cloudinaryResponse = user.image;
+      // if (image) {
+      //   const data = await CloudinaryConfig.destination(value.image,);
+      //   cloudinaryResponse = data;
+      // }
+
       let cloudinaryResponse = user.image;
-      if (image) {
-        const data = await CloudinaryConfig.destination(value.image);
-        cloudinaryResponse = data;
+      let cloudinaryCoverResponse = user.cover; // Menyimpan respons Cloudinary untuk bidang cover
+      if (image || cover) {
+        // Memeriksa apakah ada file gambar atau cover yang diunggah
+        // Memproses unggahan gambar
+        const imageData = image
+          ? await CloudinaryConfig.destination(image)
+          : null;
+        cloudinaryResponse = imageData;
+
+        const coverData = cover
+          ? await CloudinaryConfig.destination(cover)
+          : null;
+        cloudinaryCoverResponse = coverData;
       }
 
       const fieldsToUpdate = [
         "username",
-        "full_name",
+        "fullname",
         "email",
+        "cover",
         "password",
         "image",
-        "cover",
         "description",
       ];
       fieldsToUpdate.forEach((field) => {
@@ -88,6 +107,7 @@ export default new (class UserControllers {
       });
 
       user.image = cloudinaryResponse;
+      user.cover = cloudinaryCoverResponse;
 
       await UserServices.update(user);
       const response: User | any = await UserServices.findOne(id);

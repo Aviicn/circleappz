@@ -27,6 +27,7 @@ model User {
   replies     Reply[]
 }
 
+
 model Follow {
   followerId  Int
   followingId Int
@@ -50,6 +51,7 @@ model Like {
   threadId  Int
   userId    Int
   user      User   @relation(fields: [userId], references: [id])
+  thread    Thread @relation(fields: [threadId], references: [id])
 
   @@id([threadId, userId])
 }

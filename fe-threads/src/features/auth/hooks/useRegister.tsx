@@ -22,7 +22,7 @@ export function useRegister() {
 
   async function handleRegister() {
     try {
-      alert(JSON.stringify(form));
+      // alert(JSON.stringify(form));
       await API.post("/auth/register", form);
       navigate("/auth/login");
     } catch (error) {

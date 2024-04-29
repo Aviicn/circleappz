@@ -11,7 +11,7 @@ export function Follows(props: IFollow) {
         <Image
           src={
             props.picture ??
-            "https://static1.personality-database.com/profile_images/4b05b8222e1f47d1b721ebe0800c9169.png"
+            "https://i.pinimg.com/236x/41/2f/95/412f951a84614f3eaa634b44b7514e0e.jpg"
           }
           width={"50px"}
           height={"50px"}

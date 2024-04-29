@@ -25,7 +25,7 @@ export function useProfile() {
       let url = URL.createObjectURL(e.target.files[0]);
       setPreview(url);
     }
-    console.log("xixixi", e); //iya wkwk
+    console.log("xixixi", e);
   };
 
   const handleChangeCover = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +34,6 @@ export function useProfile() {
       [e.target.name]:
         e.target.type === "file" ? e.target.files?.[0] : e.target.value,
     });
-    //trs
     // Create image url f or preview
     if (e.target.type === "file" && e.target.files?.[0]) {
       let url = URL.createObjectURL(e.target.files[0]);
@@ -52,22 +51,24 @@ export function useProfile() {
   });
 
   async function postTodo() {
-    alert(JSON.stringify(preview));
-    alert(JSON.stringify(coverPreview));
-    alert("HHHH");
-    alert(JSON.stringify(form.image));
+    // alert(JSON.stringify(preview));
+    // alert(JSON.stringify(coverPreview));
+    // alert("HHHH");
+    // alert(JSON.stringify(form.image));
 
-    alert(JSON.stringify(form.cover));
+    // alert(JSON.stringify(form.cover));
 
     const formData = new FormData();
-    formData.append("image", preview);
-    formData.append("cover", coverPreview);
+    formData.append("image", form.image as string);
+    formData.append("cover", form.cover as string);
     formData.append("fullname", form.fullname as string);
+    formData.append("username", form.username as string);
+
     formData.append("description", form.description as string);
 
     try {
       console.log("Image upload response:", formData);
-      alert(JSON.stringify(formData));
+      // alert(JSON.stringify(formData));
 
       const response = await API.patch(`/user/${form.id}`, formData);
       dispatch(AUTH_EDIT(response.data));

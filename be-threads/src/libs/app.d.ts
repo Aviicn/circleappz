@@ -10,7 +10,6 @@ export interface IUser {
   email: string;
   fullname: string;
   follower: string;
-
   following: string;
 }
 

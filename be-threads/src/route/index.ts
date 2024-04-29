@@ -17,6 +17,7 @@ import FollowsController from "../controllers/FollowControllers";
 
 const router = express.Router();
 const UploadMiddleware = new FileUpload("image");
+// const UploadMiddlewarecover = new FileUpload("cover");
 
 // CRUD Threads
 router.get(
@@ -74,6 +75,13 @@ router.patch(
   UserControllers.update
 );
 
+// router.patch(
+//   "/user/:id",
+//   AuthenticationMiddlewares.Authentication,
+//   UploadMiddleware.handleUpload.bind(UploadMiddleware),
+//   UploadMiddleware.handleUpload.bind(UploadMiddlewarecover),
+//   UserControllers.update
+// );
 // LIKE
 router.post(
   "/like",
@@ -115,23 +123,23 @@ router.delete(
   FollowsController.delete
 );
 
-// NOTIFICATION
-router.get("/notifications", (req: express.Request, res: express.Response) => {
-  res.setHeader("Content-Type", "text/event-stream");
-  res.setHeader("Cache-Control", "no-cache");
-  res.setHeader("Connection", "keep-alive");
+// // NOTIFICATION
+// router.get("/notifications", (req: express.Request, res: express.Response) => {
+//   res.setHeader("Content-Type", "text/event-stream");
+//   res.setHeader("Cache-Control", "no-cache");
+//   res.setHeader("Connection", "keep-alive");
 
-  res.write("event: message\n");
-  function sendNotification(data: any) {
-    res.write("data:" + data + "\n\n");
-  }
+//   res.write("event: message\n");
+//   function sendNotification(data: any) {
+//     res.write("data:" + data + "\n\n");
+//   }
 
-  router.get("/new-thread", (req, res) => {
-    const data = JSON.stringify({ data: "new thread!" });
-    sendNotification(data);
+//   router.get("/new-thread", (req, res) => {
+//     const data = JSON.stringify({ data: "new thread!" });
+//     sendNotification(data);
 
-    res.sendStatus(200);
-  });
-});
+//     res.sendStatus(200);
+//   });
+// });
 
 export default router;

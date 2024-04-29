@@ -6,5 +6,6 @@ export const updateUserSchema = Joi.object().keys({
   email: Joi.string().allow(null).optional(),
   // password: Joi.string().allow(null).optional(),
   image: Joi.string().allow(null).optional(),
+  cover: Joi.string().allow(null).optional(),
   description: Joi.string().allow(null).optional(),
 });

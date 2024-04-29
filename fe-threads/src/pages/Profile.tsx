@@ -102,7 +102,7 @@ export default function Profile() {
           src={
             typeof auth?.image === "string"
               ? auth?.image
-              : "https://i.pinimg.com/236x/6c/ab/68/6cab68da4b7a8bcb1219aa015aa2bc76.jpg"
+              : "https://i.pinimg.com/236x/41/2f/95/412f951a84614f3eaa634b44b7514e0e.jpg"
           }
           border={"4px solid white"}
           width={"80px"}
