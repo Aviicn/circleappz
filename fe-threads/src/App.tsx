@@ -25,23 +25,7 @@ function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // async function testNotification() {
-  //   toast.info(
-  //     <p>
-  //       New threads are available! <a href="/">Check it out!</a>
-  //     </p>,
-  //     {
-  //       position: "top-right",
-  //       autoClose: 5000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //       theme: "light",
-  //     }
-  //   );
-  // }
+ 
 
   async function authCheck() {
     try {
@@ -55,26 +39,6 @@ function App() {
       navigate("/auth/login");
     }
   }
-
-  // useEffect(() => {
-  //   const sse = new EventSource("http://localhost:3000/api/notifications");
-
-  //   async function getRealtimeData(data: any) {
-  //     console.log("Ini datanya cuy:", data);
-  //     testNotification();
-  //   }
-
-  //   sse.onopen = (e) => console.log("berhasil connect ! : ", e);
-  //   sse.onmessage = (e) => getRealtimeData(JSON.parse(e.data));
-  //   sse.onerror = () => {
-  //     console.log("Error SSE bro!");
-  //     sse.close();
-  //   };
-
-  //   return () => {
-  //     sse.close();
-  //   };
-  // }, []);
 
   useEffect(() => {
     if (localStorage.token) {

@@ -135,16 +135,7 @@ export default function Home() {
           {getThreads?.map((item) => {
             return (
               <Box key={item.id}>
-                <ThreadCard
-                  id={item.id}
-                  users={item?.user}
-                  content={item.content}
-                  likes_count={item.likes_count}
-                  posted_at={item.posted_at}
-                  replies_count={item.replies_count}
-                  image={item.image}
-                  is_liked={item.is_liked}
-                />
+                x
               </Box>
             );
           })}

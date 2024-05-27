@@ -22,10 +22,10 @@ export function MyProfile() {
   const auth = useSelector((state: RootState) => state.auth);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // const [countFollow, setCountFollow] = React.useState({
-  //   followers: 0,
-  //   followings: 0,
-  // });
+  const [countFollow, setCountFollow] = React.useState({
+    followers: 0,
+    followings: 0,
+  });
 
   React.useEffect(() => {
     async function fetchFollowCounts() {
@@ -107,11 +107,11 @@ export function MyProfile() {
 
           <Box display={"flex"} gap={5} mt={1}>
             <Box display={"flex"} gap={2} fontSize={"sm"}>
-              <Text fontWeight={"bold"}>{0}</Text>
+              <Text fontWeight={"bold"}>{countFollow.followings}</Text>
               <Text>Following</Text>
             </Box>
             <Box display={"flex"} gap={2} fontSize={"sm"}>
-              <Text fontWeight={"bold"}>{0}</Text>
+              <Text fontWeight={"bold"}>{countFollow.followers}</Text>
               <Text>Followers</Text>
             </Box>
           </Box>

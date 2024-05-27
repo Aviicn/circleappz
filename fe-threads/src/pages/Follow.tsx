@@ -18,12 +18,11 @@ export default function Follow() {
   const [isActiveFollowing, setIsActiveFollowing] = React.useState<boolean>(
     !isActiveFollowers
   );
-  console.log("follow", follows);
+
   React.useEffect(() => {
     async function fetch() {
       try {
         const response = await API.get(`/follows?type=followers`);
-        console.log(response, "resp");
         dispatch(GET_FOLLOWS(response.data));
       } catch (err) {
         throw err;
@@ -31,7 +30,7 @@ export default function Follow() {
     }
 
     fetch();
-  }, [followState, dispatch]);
+  }, []);
 
   React.useEffect(() => {
     getFollowData();

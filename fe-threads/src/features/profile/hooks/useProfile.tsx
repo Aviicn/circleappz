@@ -63,7 +63,6 @@ export function useProfile() {
     formData.append("cover", form.cover as string);
     formData.append("fullname", form.fullname as string);
     formData.append("username", form.username as string);
-
     formData.append("description", form.description as string);
 
     try {
@@ -72,7 +71,7 @@ export function useProfile() {
 
       const response = await API.patch(`/user/${form.id}`, formData);
       dispatch(AUTH_EDIT(response.data));
-      console.log("Image upload response:", response.data);
+      // console.log("Image upload response:", response.data);
     } catch (error) {
       console.error("Image upload error:", error);
       throw error;

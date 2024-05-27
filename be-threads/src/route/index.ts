@@ -1,12 +1,6 @@
 import * as express from "express";
 import ThreadControllers from "../controllers/ThreadControllers";
 import AuthControllers from "../controllers/AuthControllers";
-//pah ak kahfian dlu capek liat laptop
-//ok
-//itu pph dh bs liat terminl nulis jg bs
-//ngk liat terminal...isinya hrusny dh bs
-//pa chk dulu edit profilenya
-
 import AuthenticationMiddlewares from "../middlewares/Auth";
 import FileUpload from "../middlewares/UploadFile";
 import LikeControllers from "../controllers/LikeControllers";
