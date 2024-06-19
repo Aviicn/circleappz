@@ -13,7 +13,7 @@ export default new (class ThreadControllers {
 
       return res.status(200).json(response);
     } catch (err) {
-      console.log("ERR", err);
+      // console.log("ERR", err);
       return res
         .status(500)
         .json({ error: "Something went wrong on the server!" });

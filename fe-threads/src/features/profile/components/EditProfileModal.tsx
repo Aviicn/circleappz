@@ -167,8 +167,8 @@ export default function EditProfileModal(props: any) {
 
           <ModalFooter>
             <Button
-              bg={"green"}
-              colorScheme="green"
+              bg={"linear-gradient(90deg, #63E5C5, #14366F)"}
+              colorScheme="linear-gradient(90deg, #63E5C5, #14366F)"
               mr={3}
               px={10}
               onClick={() => {
@@ -179,7 +179,15 @@ export default function EditProfileModal(props: any) {
             >
               Save
             </Button>
-            <Button onClick={props.onClose}>Cancel</Button>
+            <Button
+              onClick={props.onClose}
+              bg={"linear-gradient(90deg, #63E5C5, #14366F)"}
+              colorScheme="linear-gradient(90deg, #63E5C5, #14366F)"
+              px={10}
+              borderRadius={"full"}
+            >
+              Cancel
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

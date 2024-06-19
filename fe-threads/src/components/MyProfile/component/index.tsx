@@ -47,7 +47,7 @@ export function MyProfile() {
   }, []);
 
   return (
-    <Box bg="black" w="400px" justifyContent={"end"} p={4} h="100vh">
+    <Box bg="black" w="400px" justifyContent={"end"} p={4} h="100vh" mx={"5"}>
       <Card maxW="sm" bg="#262626" color="white" p={5} borderRadius={10}>
         <Text color={"white"} fontWeight={"bold"}>
           My Profile
@@ -81,7 +81,8 @@ export function MyProfile() {
               size={"s"}
               borderColor={"gray"}
               textColor={"white"}
-              bg={"green"}
+              bg={"linear-gradient(90deg, #63E5C5, #14366F)"}
+              colorScheme="linear-gradient(90deg, #63E5C5, #14366F)"
               mt={-5}
               h={10}
               paddingX={4}

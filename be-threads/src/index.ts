@@ -1,6 +1,5 @@
 import * as express from "express";
 import * as cors from "cors";
-// import * as swaggerUi from "swagger-ui-express";
 import { AppDataSource } from "./data-source";
 import CloudinaryConfig from "./libs/cloudinary";
 import router from "./route";
@@ -16,16 +15,6 @@ AppDataSource.initialize()
     app.use(express.json());
     app.use("/api", router);
     app.use(express.static("public"));
-
-    // app.use(
-    //   "/docs",
-    //   swaggerUi.serve,
-    //   swaggerUi.setup(undefined, {
-    //     swaggerOptions: {
-    //       url: "/swagger.json",
-    //     },
-    //   })
-    // );
 
     app.listen(port, () => {
       console.log("Server running on port: " + port);

@@ -4,7 +4,7 @@ import AuthServices from "../services/AuthServices";
 export default new (class AuthControllers {
   async register(req: Request, res: Response) {
     try {
-      console.log("REQ", req.body);
+      // console.log("REQ", req.body);
       const response = await AuthServices.register(req.body);
       return res.status(200).json(response);
     } catch (err) {
@@ -16,7 +16,7 @@ export default new (class AuthControllers {
 
   async login(req: Request, res: Response) {
     try {
-      console.log("cccc", req.body);
+      // console.log("cccc", req.body);
       const response = await AuthServices.login(req.body);
       return res.status(200).json(response);
     } catch (err) {

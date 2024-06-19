@@ -7,7 +7,6 @@ import {
   Button,
   Avatar,
   Text,
-  Flex,
 } from "@chakra-ui/react";
 import { ThreadCard } from "@/features/threads";
 import { useThreads } from "@/features/threads/Hooks/useThreads";
@@ -35,112 +34,110 @@ export default function Home() {
 
   return (
     <Box
-      display="flex"
-      w="100%"
-      h="100vh"
+      display={"flex"}
+      justifyContent={"center"}
+      alignContent={"center"}
       bg="black"
       className="beranda"
       overflow={"auto"}
+      width="620px"
+      borderRight="1px"
+      borderColor={"#3F3F3F"}
     >
-      <Flex justifyContent="center">
-        <Box
-          w="650px"
-          position="relative"
-          // right="70"
-          // left="80"
-          bg="black"
-          color={"white"}
-          borderRight="1px"
-          borderColor="#313131"
-          // overflowY="auto"
+      <Box position="relative" bg="black" color={"white"}>
+        <Text color={"white"} fontSize="3xl" mx="10" fontWeight="bold">
+          Home
+        </Text>
+
+        <WrapItem
+          p={9}
+          fontSize="2xl"
+          display="flex"
+          borderBottom="1px"
+          borderColor={"#3F3F3F"}
         >
-          <Text
-            // bgGradient="linear(to-l, #7928CA, #FF0080)"
-            color={"white"}
-            fontSize="2xl"
-            // bgClip="text"
-            // mt={4}
-            // p={3}
-            m="5"
-            fontWeight="bold"
+          <Avatar
+            src={
+              typeof auth?.image === "string"
+                ? auth?.image
+                : "https://i.pinimg.com/236x/41/2f/95/412f951a84614f3eaa634b44b7514e0e.jpg"
+            }
+          />
+
+          <FormControl
+            display={"flex"}
+            flexDirection={"column"}
+            // gap={4}
+            bg={"transparent"}
+            width={"100%"}
           >
-            Home
-          </Text>
-
-          <WrapItem mt={6} p={4} fontSize="2xl" display="flex" mb={8}>
-            <Avatar
-              src={
-                typeof auth?.image === "string"
-                  ? auth?.image
-                  : "https://i.pinimg.com/236x/41/2f/95/412f951a84614f3eaa634b44b7514e0e.jpg"
-              }
-            />
-
-            <FormControl
+            <Box
               display={"flex"}
-              flexDirection={"column"}
-              gap={2}
-              bg={"transparent"}
-              width={"100%"}
+              justifyContent={"center"}
+              alignItems={"center"}
             >
-              <Box
-                display={"flex"}
-                justifyContent={"center"}
-                alignItems={"center"}
+              <Input
+                placeholder="What is happening?!"
+                color={"white"}
+                name="content"
+                type="text"
+                onChange={handleChange}
+                value={form.content}
+                borderColor={"white"}
+                ml={2}
+              />
+              <Button
+                variant={"ghost"}
+                color={"brand.green"}
+                onClick={handleButtonClick}
               >
-                <Input
-                  placeholder="What is happening?!"
-                  color={"white"}
-                  name="content"
-                  type="text"
-                  onChange={handleChange}
-                  value={form.content}
-                  border={"none"}
+                <BiSolidImageAdd
+                  style={{
+                    height: "50px",
+                    width: "50px",
+                  }}
                 />
-                <Button
-                  variant={"ghost"}
-                  color={"brand.green"}
-                  onClick={handleButtonClick}
-                >
-                  <BiSolidImageAdd
-                    style={{
-                      height: "50px",
-                      width: "50px",
-                    }}
-                  />
-                </Button>
-                <Input
-                  type="file"
-                  name="image"
-                  onChange={handleChange}
-                  style={{ display: "none" }}
-                  ref={fileInputRef}
-                />
+              </Button>
+              <Input
+                type="file"
+                name="image"
+                onChange={handleChange}
+                style={{ display: "none" }}
+                ref={fileInputRef}
+              />
 
-                <Box display={"flex"} justifyContent={"end"}>
-                  <Button
-                    backgroundColor={"green"}
-                    color={"white"}
-                    colorScheme="green"
-                    onClick={() => handlePost.mutate()}
-                    borderRadius={"full"}
-                    px={6}
-                  >
-                    Post
-                  </Button>
-                </Box>
+              <Box display={"flex"} justifyContent={"end"}>
+                <Button
+                  bg={"linear-gradient(90deg, #63E5C5, #14366F)"}
+                  colorScheme="linear-gradient(90deg, #63E5C5, #14366F)"
+                  onClick={() => handlePost.mutate()}
+                  borderRadius={"full"}
+                  px={6}
+                >
+                  Post
+                </Button>
               </Box>
-            </FormControl>
-          </WrapItem>
-          {getThreads?.map((item) => {
-            return (
-              <Box key={item.id}>
-                x
-              </Box>
-            );
-          })}
-        </Box>
-      </Flex>
+            </Box>
+          </FormControl>
+        </WrapItem>
+
+        {getThreads?.map((item) => {
+          return (
+            <Box key={item.id}>
+              <ThreadCard
+                id={item.id}
+                users={item?.user}
+                content={item.content}
+                likes_count={item.likes_count}
+                posted_at={item.posted_at}
+                replies_count={item.replies_count}
+                image={item.image}
+                is_liked={item.is_liked}
+              />
+            </Box>
+          );
+        })}
+      </Box>
     </Box>
   );
 }

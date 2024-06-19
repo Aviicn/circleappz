@@ -22,7 +22,7 @@ export default function Login() {
       alignItems={"center"}
       marginTop={"150px"}
     >
-      <Spinner color="green.500" />
+      <Spinner color="linear-gradient(90deg, #63E5C5, #14366F)" />
       <Text mt={2}>Please wait...</Text>
     </Box>
   ) : (
@@ -39,7 +39,7 @@ export default function Login() {
       <Box display={"flex"} gap={2} mt={4}>
         <Text>Don't have an account yet ?</Text>
         <Text
-          color={"green"}
+          color={"linear-gradient(90deg, #63E5C5, #14366F)"}
           cursor={"pointer"}
           onClick={() => navigate("/auth/register")}
         >

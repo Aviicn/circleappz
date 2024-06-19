@@ -23,7 +23,6 @@ class ThreadServices {
           id: "desc",
         },
       });
-      // console.log("HASIL ???????????", JSON.stringify(threads));
 
       let newResponse = threads.map((element: any) => ({
         ...element,

@@ -8,7 +8,7 @@ export type IThreadPost = {
 
 export type IThreadCard = {
   id?: number;
-  user?: IUser;
+  users?: IUser;
   posted_at?: string;
   content?: string;
   image?: string;

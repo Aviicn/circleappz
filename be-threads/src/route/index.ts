@@ -29,12 +29,7 @@ router.get(
   AuthenticationMiddlewares.Authentication,
   ThreadControllers.findOneByUserId
 );
-// router.post(
-//   "/thread",
-//   AuthenticationMiddlewares.Authentication,
-//   UploadMiddleware.handleUpload.bind(UploadMiddleware),
-//   ThreadQueue.create
-// );
+
 router.post(
   "/thread",
   AuthenticationMiddlewares.Authentication,

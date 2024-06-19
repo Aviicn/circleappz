@@ -14,7 +14,8 @@ export const ThreadCard = (props: IThreadCard): React.JSX.Element => {
     <Box
       display={"flex"}
       width="660px"
-      borderBottom={"1px solid #d3d3d3"}
+      borderBottom="1px"
+      borderColor={"#3F3F3F"}
       padding={"10px 20px"}
     >
       <Image
@@ -59,6 +60,7 @@ export const ThreadCard = (props: IThreadCard): React.JSX.Element => {
             height={"300px"}
             objectFit={"fill"}
             marginRight={"20px"}
+            borderRadius={10}
           />
         )}
         <Box display={"flex"} gap={5} marginTop={"10px"}>

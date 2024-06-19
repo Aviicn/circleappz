@@ -36,7 +36,7 @@ export default new (class AuthServices {
         user: user,
       };
     } catch (err) {
-      console.log("err", err);
+      // console.log("err", err);
       throw new Error("Something went wrong on the server!");
     }
   }

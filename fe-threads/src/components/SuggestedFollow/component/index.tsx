@@ -70,8 +70,11 @@ export const SuggestedFollow = (): React.JSX.Element => {
                   size={"xs"}
                   variant={item?.isFollowing ? "outline" : "solid"}
                   borderRadius={"full"}
-                  colorScheme={item?.isFollowing ?? "green"}
-                  bg={!item?.isFollowing ? "green" : "white"}
+                  colorScheme={
+                    item?.isFollowing ??
+                    "linear-gradient(90deg, #63E5C5, #14366F)"
+                  }
+                  bg="linear-gradient(90deg, #63E5C5, #14366F)"
                   px={3}
                   onClick={() => mutationFollow.mutate(item?.id)}
                 >

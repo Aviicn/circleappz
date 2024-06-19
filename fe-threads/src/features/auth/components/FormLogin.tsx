@@ -27,7 +27,7 @@ const FormLogin = (): React.JSX.Element => {
       }
     >
       <Text
-        color={"green"}
+        color={"linear-gradient(90deg, #63E5C5, #14366F)"}
         fontSize={"2xl"}
         fontWeight={"bold"}
         textAlign={"center"}

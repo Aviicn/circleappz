@@ -53,8 +53,8 @@ export default function CardUser(props: any) {
       <Button
         size={"sm"}
         variant={props.isFollowing ? "outline" : "solid"}
-        colorScheme="green"
-        bg={props.isFollowing ? "white" : "green"}
+        colorScheme="linear-gradient(90deg, #63E5C5, #14366F)"
+        bg="linear-gradient(90deg, #63E5C5, #14366F)"
         px={5}
         borderRadius={"full"}
         onClick={() => mutationFollow.mutate(props.id)}

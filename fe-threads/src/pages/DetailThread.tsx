@@ -96,8 +96,8 @@ export default function DetailThread() {
                 />
                 <Button
                   type="submit"
-                  backgroundColor={"brand.green"}
-                  colorScheme="green"
+                  bg={"linear-gradient(90deg, #63E5C5, #14366F)"}
+                  colorScheme="linear-gradient(90deg, #63E5C5, #14366F)"
                   fontSize={"12px"}
                   width={"70px"}
                 >

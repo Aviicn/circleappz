@@ -27,13 +27,19 @@ export default function ListUser() {
   return (
     <Box display={"flex"} justifyContent={"center"}>
       <Box
+        // display={"flex"}
+        // alignItems={"center"}
+        // flexDirection={"column"}
+        // paddingY={"20px"}
+        // width="620px"
+        // marginLeft={"-10px"}
+        // borderColor={"brand.grey"}
         display={"flex"}
-        alignItems={"center"}
         flexDirection={"column"}
-        paddingY={"20px"}
-        width="620px"
-        marginLeft={"-10px"}
-        borderColor={"brand.grey"}
+        width="606px"
+        p={4}
+        borderRight="1px"
+        borderColor={"#3F3F3F"}
       >
         <InputGroup>
           <InputLeftElement pointerEvents="none">

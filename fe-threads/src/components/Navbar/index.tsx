@@ -47,8 +47,8 @@ export function Navbar() {
       w="320px"
       p={3}
       height="100%"
-      // borderRight="1px"
-      borderColor="#313131"
+      borderRight="1px"
+      borderColor={"#3F3F3F"}
       color="white"
     >
       <UnorderedList
@@ -57,7 +57,12 @@ export function Navbar() {
         flexDir={"column"}
         gap={"5"}
       >
-        <ListItem color={"green"} fontSize={"50px"} fontWeight={"bold"}>
+        <ListItem
+          bgClip="text"
+          bgGradient="linear(to-r, #63E5C5, #14366F)"
+          fontSize={"50px"}
+          fontWeight={"bold"}
+        >
           circle
         </ListItem>
         <Link to="/">
@@ -114,9 +119,12 @@ export function Navbar() {
         <WrapItem>
           <Button
             onClick={onOpen}
-            bg={"green"}
+            // bg="linear-gradient(90deg, #BFF098, #6FD6FF)"
+            bg="linear-gradient(90deg, #F2D498, #9FD2E0)"
+            // bg="linear-gradient(90deg, #BFF098, #6FD6FF)"
+            colorScheme="none"
             width="55%"
-            color={"white"}
+            color={"black"}
             mt={4}
             ml={3}
             borderRadius="20"
@@ -156,7 +164,12 @@ export function Navbar() {
                 </WrapItem>
               </ModalBody>
               <ModalFooter>
-                <Button mb="2" bg={"green"} borderRadius="20px" mr={3}>
+                <Button
+                  mb="2"
+                  bg="linear-gradient(90deg, #63E5C5, #14366F)"
+                  borderRadius="20px"
+                  mr={3}
+                >
                   Reply
                 </Button>
               </ModalFooter>

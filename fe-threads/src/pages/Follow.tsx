@@ -58,12 +58,12 @@ export default function Follow() {
       <Box
         display={"flex"}
         flexDirection={"column"}
-        paddingY={"20px"}
-        width="620px"
-        marginLeft={"-10px"}
-        borderColor={"brand.grey"}
+        width="606px"
+        p={1}
+        borderRight="1px"
+        borderColor={"#3F3F3F"}
       >
-        <Text fontWeight={"bold"} fontSize={"xl"} mb={4}>
+        <Text fontWeight={"bold"} fontSize={"3xl"} mx={6} my={7}>
           Follow
         </Text>
 
@@ -74,7 +74,7 @@ export default function Follow() {
               fontSize={"md"}
               pb={2}
               borderBottom={
-                isActiveFollowers ? "1px solid red" : "1px solid #dbdbdb"
+                isActiveFollowers ? "1px solid white " : "1px solid  #63E5C5"
               }
             >
               Followers
@@ -87,7 +87,7 @@ export default function Follow() {
               fontSize={"md"}
               pb={2}
               borderBottom={
-                isActiveFollowing ? "1px solid red" : "1px solid #dbdbdb"
+                isActiveFollowing ? "1px solid white " : "1px solid  #63E5C5"
               }
             >
               Following

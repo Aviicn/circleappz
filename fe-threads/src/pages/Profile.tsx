@@ -1,5 +1,4 @@
 import React from "react";
-import { Footer, SuggestedFollow } from "@/components";
 import { RootState } from "@/store/type/RootState";
 import {
   Box,
@@ -41,38 +40,52 @@ export default function Profile() {
   const getThreadByUser = async () => {
     try {
       const response = await API.get(`/thread/${id}`);
-      // alert(JSON.stringify(response.data.user));
       setThreadByUser(response.data);
     } catch (error) {
       console.error("Error fetching thread by user:", error);
     }
   };
 
+  const [countFollow, setCountFollow] = React.useState({
+    followers: 0,
+    followings: 0,
+  });
   const threadOnlyImg = threadByUser?.filter(
     (data: any) => data.image !== null
   );
-
+  React.useEffect(() => {
+    async function fetchFollowCounts() {
+      try {
+        const sumFollowers = await API.get(`/follows?type=followers`);
+        const sumFollowings = await API.get(`/follows?type=followings`);
+        setCountFollow({
+          followers: sumFollowers.data.length,
+          followings: sumFollowings.data.length,
+        });
+      } catch (err) {
+        // Handle error properly, e.g., display error message to user or log it
+        console.error("Error fetching follow counts:", err);
+      }
+    }
+    fetchFollowCounts();
+  }, []);
   React.useEffect(() => {
     getThreadByUser();
   }, []);
 
   return (
     <Box
-      w={"35%"}
       display={"flex"}
       color={"white"}
-      m={"20px"}
-      mt={"30px"}
+      width="620px"
+      p={6}
+      borderRight="1px"
+      borderColor={"#3F3F3F"}
       flexDir={"column"}
-      gap={"3"}
       className="beranda"
       overflow={"auto"}
       textColor={"white"}
     >
-      {/* <Box width={"100%"} display={"flex"} flexDirection={"column"} gap={2}>
-        <Navbar />
-      </Box> */}
-
       <Box display={"inline-block"}>
         <Box
           display={"flex"}
@@ -117,7 +130,7 @@ export default function Profile() {
             size={"s"}
             borderColor={"gray"}
             textColor={"white"}
-            bg={"green"}
+            bg="linear-gradient(90deg, #63E5C5, #14366F)"
             mt={-5}
             h={10}
             paddingX={4}
@@ -144,11 +157,11 @@ export default function Profile() {
 
         <Box display={"flex"} gap={5} mt={1}>
           <Box display={"flex"} gap={2} fontSize={"sm"}>
-            <Text fontWeight={"bold"}>{0}</Text>
+            <Text fontWeight={"bold"}>{countFollow.followings}</Text>
             <Text>Following</Text>
           </Box>
           <Box display={"flex"} gap={2} fontSize={"sm"}>
-            <Text fontWeight={"bold"}>{0}</Text>
+            <Text fontWeight={"bold"}>{countFollow.followers}</Text>
             <Text>Followers</Text>
           </Box>
         </Box>
@@ -214,8 +227,6 @@ export default function Profile() {
             No Media Yet
           </Text>
         )}
-        {/* <SuggestedFollow />
-        <Footer /> */}
       </Box>
     </Box>
   );
